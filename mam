@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff0f3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>С Днём Рождения, Любимая Мамочка! ❤️</title>
+  <meta name="description" content="Трогательное праздничное поздравление с днём рождения для самой лучшей мамы на свете.">
+
+  <!-- Google Fonts: Elegant and warm Cyrillic typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Marck+Script&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💖</text></svg>">
+</head>
+<body>
+
+  <!-- Floating Background Canvas for Petals & Sparkles -->
+  <canvas id="particlesCanvas"></canvas>
+
+  <!-- Top Action Bar -->
+  <header class="top-nav">
+    <div class="top-nav__logo">
+      <span class="heart-pulse">❤️</span> Для любимой мамы
+    </div>
+    <div class="top-nav__actions">
+      <!-- Music Toggle Button -->
+      <button id="musicToggleBtn" class="btn btn--glass" title="Включить нежную музыку">
+        <span id="musicIcon" class="music-icon">🎵</span>
+        <span id="musicText" class="btn-text">Включить музыку</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Background Audio -->
+  <audio id="bgAudio" src="audio/music.mp3" preload="auto" loop></audio>
+
+  <main class="page-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero__badge animate-float">
+        <span>✨ Самый особенный день в году ✨</span>
+      </div>
+
+      <h1 class="hero__title">
+        С Днём Рождения,<br>
+        <span class="hero__highlight">Любимая Мамочка!</span>
+      </h1>
+
+      <p class="hero__subtitle">
+        Ты — главное солнце в нашей семье, источник бесконечной доброты, уюта и самой искренней любви на свете.
+      </p>
+
+      <div class="hero__cta-group">
+        <a href="#letter" class="btn btn--primary">
+          <span>💌</span> Читать поздравление
+        </a>
+        <a href="#cake" class="btn btn--secondary">
+          <span>🎂</span> Задуть свечи
+        </a>
+        <a href="#gallery" class="btn btn--tertiary">
+          <span>📸</span> Альбом воспоминаний
+        </a>
+      </div>
+
+      <div class="scroll-down-hint">
+        <span>Листай вниз к сюрпризам</span>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </section>
+
+
+    <!-- INTERACTIVE BIRTHDAY CAKE SECTION -->
+    <section class="section section--cake" id="cake">
+      <div class="section-header">
+        <div class="section-tag">Интерактивный сюрприз</div>
+        <h2 class="section-title">Загадай заветное желание 🎂</h2>
+        <p class="section-desc">
+          Закрой глаза, загадай самое сокровенное желание и нажми на свечи, чтобы задуть их!
+        </p>
+      </div>
+
+      <div class="cake-container">
+        <!-- Interactive Cake illustration -->
+        <div class="birthday-cake" id="birthdayCake" title="Нажми, чтобы задуть свечи!">
+          <div class="candles-row" id="candlesRow">
+            <div class="candle candle--1">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="candle-stick"></div>
+            </div>
+            <div class="candle candle--2">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="candle-stick"></div>
+            </div>
+            <div class="candle candle--3">
+              <div class="flame"></div>
+              <div class="smoke"></div>
+              <div class="candle-stick"></div>
+            </div>
+          </div>
+          <!-- Cake tiers -->
+          <div class="cake-tier cake-tier--top">
+            <div class="frosting"></div>
+            <div class="berries">
+              <span>🍓</span><span>🫐</span><span>🍓</span>
+            </div>
+          </div>
+          <div class="cake-tier cake-tier--middle">
+            <div class="frosting"></div>
+          </div>
+          <div class="cake-tier cake-tier--bottom">
+            <div class="frosting"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <!-- Wish Reveal Card (Appears after blowing candles) -->
+        <div class="wish-reveal" id="wishReveal">
+          <div class="wish-reveal__content">
+            <div class="wish-reveal__icon">✨💖✨</div>
+            <h3>Твоё желание обязательно сбудется!</h3>
+            <p>
+              Пусть каждый день приносит радость, здоровье будет несокрушимым, а в доме всегда звучит звонкий смех. Ты заслуживаешь всего самого прекрасного во Вселенной!
+            </p>
+            <button class="btn btn--secondary btn--sm" id="relightCakeBtn">
+              Зажечь свечи снова 🔥
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- HEARTFELT LETTER / GREETING SECTION -->
+    <section class="section section--letter" id="letter">
+      <div class="section-header">
+        <div class="section-tag">Слова от всего сердца</div>
+        <h2 class="section-title">Письмо для мамы 💌</h2>
+      </div>
+
+      <div class="letter-card">
+        <div class="letter-card__stamp">❤️ Самой лучшей маме</div>
+        <div class="letter-card__body">
+          <h3 class="letter-greeting">Дорогая, родная моя мамочка!</h3>
+
+          <p>
+            Сегодня твой день рождения — день, когда мир стал гораздо добрее, теплее и светлее, потому что в нём появилась ты.
+          </p>
+
+          <p>
+            Сколько бы мне ни было лет, для меня нет места уютнее и безопаснее, чем рядом с тобой. Твой голос успокаивает, твоя улыбка озаряет любой пасмурный день, а твоя вера в меня окрыляет и помогает справляться с любыми жизненными преградами.
+          </p>
+
+          <p>
+            Спасибо тебе за твои бессонные ночи, за нежные руки, которые всегда готовы обнять, за мудрые советы, за вкуснейшие ужины и за то безграничное терпение, с которым ты воспитываешь и оберегаешь нашу семью.
+          </p>
+
+          <p class="letter-highlight">
+            Я от всей души желаю тебе крепчайшего здоровья, лёгкости на душе, цветущей женской красоты и нескончаемого вдохновения. Пусть твои глаза всегда сияют счастьем, а слёзы появляются лишь от радостных мгновений!
+          </p>
+
+          <p>
+            Оставайся всегда такой же молодой, лучезарной и жизнерадостной. Помни: я рядом, я очень тебя люблю и всегда буду твоей поддержкой и опорой!
+          </p>
+
+          <div class="letter-signature">
+            <div class="letter-signature__text">С бесконечной любовью и благодарностью,</div>
+            <div class="letter-signature__author">Твой любящий сын ❤️</div>
+            <div class="letter-signature__date">2026 год</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- MEMORY ALBUM / PHOTO GALLERY -->
+    <section class="section section--gallery" id="gallery">
+      <div class="section-header">
+        <div class="section-tag">Альбом воспоминаний</div>
+        <h2 class="section-title">Наши счастливые моменты 📸</h2>
+        <p class="section-desc">
+          Нажимай на любую карточку, чтобы рассмотреть фото поближе.
+        </p>
+      </div>
+
+      <!-- Gallery Grid: Polaroid-Style Cards -->
+      <div class="gallery-grid">
+
+        <!-- Photo 1 -->
+        <div class="polaroid-card" data-index="0" data-caption="Любимая мамочка — главное сокровище нашей семьи ❤️">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo1.jpg" onerror="this.onerror=null; this.src='images/photo1.svg';" alt="Любимая мама" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Любимая мама ❤️</span>
+            <span class="caption-date">С любовью</span>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="polaroid-card" data-index="1" data-caption="Твоя добрая улыбка способна согреть даже в самый морозный день ☀️">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo2.jpg" onerror="this.onerror=null; this.src='images/photo2.svg';" alt="Твоя улыбка" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Твоя улыбка ☀️</span>
+            <span class="caption-date">Свет и радость</span>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="polaroid-card" data-index="2" data-caption="Пусть в твоей жизни всегда цветут самые прекрасные цветы 🌸">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo3.jpg" onerror="this.onerror=null; this.src='images/photo3.svg';" alt="Цветы для мамы" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Цветы для тебя 🌸</span>
+            <span class="caption-date">Праздничный день</span>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="polaroid-card" data-index="3" data-caption="Уют родного дома и тёплые душевные разговоры за чашкой чая ☕">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo4.jpg" onerror="this.onerror=null; this.src='images/photo4.svg';" alt="Семейный уют" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Тепло твоего дома ☕</span>
+            <span class="caption-date">Самое родное место</span>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="polaroid-card" data-index="4" data-caption="Королева сегодняшнего праздника и каждого нашего дня 👑">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo5.jpg" onerror="this.onerror=null; this.src='images/photo5.svg';" alt="Королева дня" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Королева праздника 👑</span>
+            <span class="caption-date">Ты великолепна</span>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="polaroid-card" data-index="5" data-caption="Бесконечное спасибо за твою любовь, доброту и заботу! 💖">
+          <div class="polaroid-pin">📌</div>
+          <div class="polaroid-frame">
+            <img src="images/photo6.jpg" onerror="this.onerror=null; this.src='images/photo6.svg';" alt="Спасибо за всё" class="polaroid-img">
+          </div>
+          <div class="polaroid-caption">
+            <span class="caption-title">Бесконечное спасибо 💖</span>
+            <span class="caption-date">Навсегда в сердце</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- REASONS WHY YOU ARE THE BEST -->
+    <section class="section section--reasons" id="reasons">
+      <div class="section-header">
+        <div class="section-tag">От всего сердца</div>
+        <h2 class="section-title">Почему ты самая лучшая мама на свете ✨</h2>
+        <p class="section-desc">Нажми на любую карточку, чтобы открыть послание</p>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">💖</span>
+              <h4>Безусловная любовь</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Ты любишь и принимаешь меня в любой ситуации, без условий и претензий. Твоя любовь — это мой самый надёжный щит.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">🤗</span>
+              <h4>Самые тёплые объятия</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Твои объятия способны моментально снять любую усталость, тревогу и подарить ощущение абсолютного покоя.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">🍲</span>
+              <h4>Самая вкусная еда</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Ни один ресторан мира не сравнится с тем, что приготовлено твоими заботливыми руками и наполнено любовью.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">🧠</span>
+              <h4>Мудрость и поддержка</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Ты всегда находишь нужные слова в трудный момент, не осуждаешь, а искренне помогаешь найти верный путь.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">✨</span>
+              <h4>Вера в меня</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Даже когда у меня опускаются руки, ты продолжаешь верить в меня больше, чем я сам. Это даёт колоссальные силы двигаться вперёд.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">🏡</span>
+              <h4>Умение создавать уют</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Там, где ты — всегда тепло, пахнет домом и царит гармония. Ты умеешь делать атмосферу по-настоящему родной.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">🌸</span>
+              <h4>Твоя доброта и чуткость</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>У тебя невероятно щедрое и отзывчивое сердце. Ты всегда переживаешь за каждого и готова прийти на помощь.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reason-card" tabindex="0">
+          <div class="reason-card__inner">
+            <div class="reason-card__front">
+              <span class="reason-card__icon">👑</span>
+              <h4>Ты просто уникальная!</h4>
+              <span class="flip-hint">Нажми ↺</span>
+            </div>
+            <div class="reason-card__back">
+              <p>Мне сказочно повезло родиться именно твоим ребёнком. Ты лучшая мама во всей Вселенной, и я горжусь тобой каждый день!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- COMPLIMENTS & WISHES JAR -->
+    <section class="section section--jar" id="jar">
+      <div class="section-header">
+        <div class="section-tag">Шкатулка пожеланий</div>
+        <h2 class="section-title">Достань тёплое предсказание 💌</h2>
+        <p class="section-desc">Нажимай на кнопку, чтобы получить ещё одно искреннее пожелание или комплимент</p>
+      </div>
+
+      <div class="jar-wrapper">
+        <div class="jar-card">
+          <div class="jar-icon">🎁</div>
+          <div class="jar-message" id="jarMessage">
+            «Мамочка, пусть каждый день твоей жизни будет наполнен радостными улыбками, приятными сюрпризами и беззаботным счастьем!»
+          </div>
+          <button class="btn btn--primary" id="newWishBtn">
+            <span>✨</span> Достать новое пожелание
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- LIGHTBOX MODAL FOR PHOTOS -->
+  <div class="lightbox" id="lightboxModal" aria-hidden="true" role="dialog">
+    <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox__content">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Закрыть">&times;</button>
+      <div class="lightbox__figure">
+        <img src="" alt="" id="lightboxImg" class="lightbox__img">
+        <div class="lightbox__caption" id="lightboxCaption"></div>
+      </div>
+      <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Предыдущее фото">&#10094;</button>
+      <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Следующее фото">&#10095;</button>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__heart">💖</div>
+      <p class="footer__quote">
+        «Мама — это самый близкий, надёжный и любимый человек на свете.»
+      </p>
+      <p class="footer__sub">
+        С любовью для самой замечательной мамы • С Днём Рождения!
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
